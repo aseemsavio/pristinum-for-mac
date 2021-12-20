@@ -3,7 +3,7 @@ package com.aseemsavio.pristinium.cache
 import java.io.File
 import java.lang.Exception
 
-class CacheReader(val files: MutableList<File>, var directoryCount: Int = 0, var filesSize: Long = 0) {
+class CacheReader(val files: MutableList<File> = mutableListOf(), var directoryCount: Int = 0, var filesSize: Long = 0) {
     fun listOfFiles(dirPath: File) {
         if (dirPath.exists()) {
             val filesList = dirPath.listFiles()?.filterNotNull()
@@ -23,7 +23,7 @@ class CacheReader(val files: MutableList<File>, var directoryCount: Int = 0, var
 }
 
 fun getAllCacheFiles(): Files {
-    val reader = CacheReader(mutableListOf())
+    val reader = CacheReader()
     try {
         reader.listOfFiles(File("/Users/aseemsavio/Library/Caches"))
     } catch (e: Exception) {
